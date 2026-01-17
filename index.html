@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>batyr-3728 | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo">batyr-3728</span>
+
+  <div class="nav-center">
+    <button class="nav-btn active" data-page="about">
+      <span data-lang="ru">Обо мне</span>
+      <span data-lang="en">About</span>
+    </button>
+
+    <button class="nav-btn" data-page="projects">
+      <span data-lang="ru">Проекты</span>
+      <span data-lang="en">Projects</span>
+    </button>
+
+    <button class="nav-btn" data-page="skills">
+      <span data-lang="ru">Навыки</span>
+      <span data-lang="en">Skills</span>
+    </button>
+
+    <button class="nav-btn" data-page="contacts">
+      <span data-lang="ru">Контакты</span>
+      <span data-lang="en">Contacts</span>
+    </button>
+  </div>
+
+  <div class="nav-right">
+    <button id="langBtn">🇷🇺🔄🇺🇸</button>
+    <button id="themeBtn">
+      <img id="themeIcon" src="images/dayicon.svg" alt="theme">
+    </button>
+  </div>
+</nav>
+
+<main class="content">
+
+<section class="page active" data-page="about">
+  <div data-lang="ru" class="lang-block">
+    <h1>Привет, я Батырхан 👋</h1>
+    <p>Python-разработчик: Flask, Kivy, Telebot.</p>
+
+    <h3>Чем могу быть полезен</h3>
+    <ul>
+      <li>Telegram-боты</li>
+      <li>Flask веб-приложения</li>
+      <li>Автоматизация на Python</li>
+      <li>Приложения на Kivy</li>
+    </ul>
+  </div>
+
+  <div data-lang="en" class="lang-block">
+    <h1>Hi, I'm Batyrkhan 👋</h1>
+    <p>Python developer: Flask, Kivy, Telebot.</p>
+
+    <h3>How I can help</h3>
+    <ul>
+      <li>Telegram bots</li>
+      <li>Flask web applications</li>
+      <li>Python automation</li>
+      <li>Kivy applications</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page" data-page="projects">
+  <div data-lang="ru" class="lang-block">
+    <h1>Проекты</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>ЗОЖ сайт</h3>
+        <p>SPA-сайт с темами и переводом</p>
+
+        <div class="project-actions">
+          <a href="https://project3728b.netlify.app/" target="_blank" class="btn">Открыть</a>
+          <a href="files/project1.zip" download class="btn outline">Скачать</a>
+        </div>
+      </div>
+
+      <div class="card empty">
+        <h3>Будущий проект</h3>
+        <p>В разработке</p>
+      </div>
+    </div>
+  </div>
+
+  <div data-lang="en" class="lang-block">
+    <h1>Projects</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Health SPA</h3>
+        <p>SPA website with themes and translation</p>
+
+        <div class="project-actions">
+          <a href="https://project3728b.netlify.app/" target="_blank" class="btn">Open</a>
+          <a href="files/project1.zip" download class="btn outline">Download</a>
+        </div>
+      </div>
+
+      <div class="card empty">
+        <h3>Future project</h3>
+        <p>Coming soon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" data-page="skills">
+  <div data-lang="ru" class="lang-block">
+    <h1>Навыки</h1>
+    <ul>
+      <li>Python (Flask, Kivy, Telebot)</li>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Git, GitHub</li>
+    </ul>
+  </div>
+
+  <div data-lang="en" class="lang-block">
+    <h1>Skills</h1>
+    <ul>
+      <li>Python (Flask, Kivy, Telebot)</li>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Git, GitHub</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page" data-page="contacts">
+  <div data-lang="ru" class="lang-block">
+    <h1>Контакты</h1>
+  </div>
+
+  <div data-lang="en" class="lang-block">
+    <h1>Contacts</h1>
+  </div>
+
+  <div class="contacts">
+    <a href="https://t.me/devdeiv" class="contact telegram" target="_blank">Telegram</a>
+    <a href="https://github.com/batyr3728" class="contact github" target="_blank">GitHub</a>
+  </div>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

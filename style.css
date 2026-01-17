@@ -1,0 +1,195 @@
+:root {
+  /* СВЕТЛАЯ ТЕМА — МЯГКАЯ */
+  --bg: #EEF4F1;          /* общий фон (не белый) */
+  --card: #F8FBFA;        /* карточки (чуть светлее фона) */
+  --text: #243030;
+  --green: #2E7D32;
+  --accent: #81C784;
+  --shadow: rgba(0,0,0,0.08);
+}
+
+body.dark {
+  /* ТЁМНАЯ ТЕМА */
+  --bg: #121212;
+  --card: #1E1E1E;
+  --text: #E0E0E0;
+  --shadow: rgba(0,0,0,0.4);
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ---------- NAV ---------- */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--green);
+  padding: 12px 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-center {
+  display: flex;
+  gap: 22px;
+}
+
+.nav-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 6px;
+  cursor: pointer;
+}
+
+.nav-btn span {
+  display: none;
+}
+
+.nav-btn span.active {
+  display: inline;
+}
+
+.nav-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.nav-right {
+  display: flex;
+  gap: 10px;
+}
+
+#langBtn {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+#themeBtn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#themeBtn img {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---------- CONTENT ---------- */
+
+.content {
+  max-width: 950px;
+  margin: auto;
+  padding: 26px;
+}
+
+.page {
+  display: none;
+  background: var(--card);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 10px 22px var(--shadow);
+}
+
+.page.active {
+  display: block;
+}
+
+.lang-block {
+  display: none;
+}
+
+.lang-block.active {
+  display: block;
+}
+
+/* ---------- PROJECTS ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px var(--shadow);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card.empty {
+  border: 2px dashed var(--accent);
+  opacity: 0.65;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.btn {
+  background: var(--green);
+  color: white;
+  padding: 9px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn.outline {
+  background: none;
+  border: 2px solid var(--green);
+  color: var(--green);
+}
+
+/* ---------- CONTACTS ---------- */
+
+.contacts {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.contact {
+  padding: 12px 18px;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.telegram { background: #229ED9; }
+.github { background: #24292e; }
