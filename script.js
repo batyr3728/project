@@ -48,3 +48,35 @@ themeBtn.onclick = () => {
 
 applyLang();
 applyTheme();
+
+const navCenter = document.querySelector(".nav-center");
+const navIndicator = document.createElement("div");
+navIndicator.classList.add("nav-indicator");
+navCenter.appendChild(navIndicator);
+
+function updateIndicator() {
+  const activeBtn = document.querySelector(".nav-btn.active");
+  if (!activeBtn) return;
+  const rect = activeBtn.getBoundingClientRect();
+  const parentRect = navCenter.getBoundingClientRect();
+  navIndicator.style.width = rect.width + "px";
+  navIndicator.style.left = rect.left - parentRect.left + "px";
+}
+
+navBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    navBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    pages.forEach(p => {
+      p.classList.toggle("active", p.dataset.page === btn.dataset.page);
+    });
+
+    applyLang();
+    updateIndicator();
+  });
+});
+
+// обновляем индикатор при загрузке и при изменении размера окна
+window.addEventListener("load", updateIndicator);
+window.addEventListener("resize", updateIndicator);
