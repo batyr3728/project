@@ -66,7 +66,7 @@ body {
   display: flex;
   gap: 10px;
 }
-
+а
 #langBtn {
   font-size: 18px;
   background: none;
@@ -200,3 +200,76 @@ body {
 
 .telegram { background: #229ED9; }
 .github { background: #24292e; }
+
+/* Скрываем обычное меню на мобильных */
+@media (max-width: 768px) {
+  .nav-center {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--green);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .nav-center.show {
+    display: flex;
+  }
+
+  .nav-btn {
+    padding: 12px 20px;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Бургер кнопка */
+  #burgerBtn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+  }
+}
+
+/* Скрываем бургер на десктопе */
+#burgerBtn {
+  display: none;
+}
+
+#langBtn {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+#langBtn {
+  box-shadow: none !important;
+  outline: none;
+}
+
+#langBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+#langBtn {
+  background: none;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#langBtn:focus,
+#langBtn:active {
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+}

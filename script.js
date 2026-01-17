@@ -37,7 +37,11 @@ navBtns.forEach(btn => {
 langBtn.onclick = () => {
   lang = lang === "ru" ? "en" : "ru";
   localStorage.setItem("lang", lang);
+
   applyLang();
+
+  // ⬅️ ВАЖНО: пересчитать индикатор после смены текста
+  requestAnimationFrame(updateIndicator);
 };
 
 themeBtn.onclick = () => {
@@ -80,3 +84,9 @@ navBtns.forEach(btn => {
 // обновляем индикатор при загрузке и при изменении размера окна
 window.addEventListener("load", updateIndicator);
 window.addEventListener("resize", updateIndicator);
+
+const burgerBtn = document.getElementById("burgerBtn");
+
+burgerBtn.onclick = () => {
+  document.querySelector(".nav-center").classList.toggle("show");
+};
