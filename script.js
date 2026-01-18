@@ -3,15 +3,27 @@ const navBtns = document.querySelectorAll(".nav-btn");
 const langBtn = document.getElementById("langBtn");
 const themeBtn = document.getElementById("themeBtn");
 const themeIcon = document.getElementById("themeIcon");
+const burgerBtn = document.getElementById("burgerBtn");
+const navCenter = document.querySelector(".nav-center");
 
 let lang = localStorage.getItem("lang") || "ru";
 let theme = localStorage.getItem("theme") || "light";
 
+/* ---------- LANG ---------- */
+
 function applyLang() {
-  document.querySelectorAll("[data-lang]").forEach(el => {
+  document.querySelectorAll(".lang-block").forEach(el => {
     el.classList.toggle("active", el.dataset.lang === lang);
   });
+
+  navBtns.forEach(btn => {
+    btn.querySelectorAll("span").forEach(span => {
+      span.classList.toggle("active", span.dataset.lang === lang);
+    });
+  });
 }
+
+/* ---------- THEME ---------- */
 
 function applyTheme() {
   document.body.classList.toggle("dark", theme === "dark");
@@ -21,8 +33,27 @@ function applyTheme() {
       : "images/dayicon.svg";
 }
 
+/* ---------- INDICATOR ---------- */
+
+const indicator = document.createElement("div");
+indicator.className = "nav-indicator";
+navCenter.appendChild(indicator);
+
+function updateIndicator() {
+  const active = document.querySelector(".nav-btn.active");
+  if (!active) return;
+
+  const rect = active.getBoundingClientRect();
+  const parent = navCenter.getBoundingClientRect();
+
+  indicator.style.width = rect.width + "px";
+  indicator.style.left = rect.left - parent.left + "px";
+}
+
+/* ---------- NAV ---------- */
+
 navBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
+  btn.onclick = () => {
     navBtns.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
@@ -30,17 +61,18 @@ navBtns.forEach(btn => {
       p.classList.toggle("active", p.dataset.page === btn.dataset.page);
     });
 
+    navCenter.classList.remove("show");
     applyLang();
-  });
+    requestAnimationFrame(updateIndicator);
+  };
 });
+
+/* ---------- BUTTONS ---------- */
 
 langBtn.onclick = () => {
   lang = lang === "ru" ? "en" : "ru";
   localStorage.setItem("lang", lang);
-
   applyLang();
-
-  // ⬅️ ВАЖНО: пересчитать индикатор после смены текста
   requestAnimationFrame(updateIndicator);
 };
 
@@ -50,43 +82,16 @@ themeBtn.onclick = () => {
   applyTheme();
 };
 
-applyLang();
-applyTheme();
+burgerBtn.onclick = () => {
+  navCenter.classList.toggle("show");
+};
 
-const navCenter = document.querySelector(".nav-center");
-const navIndicator = document.createElement("div");
-navIndicator.classList.add("nav-indicator");
-navCenter.appendChild(navIndicator);
+/* ---------- INIT ---------- */
 
-function updateIndicator() {
-  const activeBtn = document.querySelector(".nav-btn.active");
-  if (!activeBtn) return;
-  const rect = activeBtn.getBoundingClientRect();
-  const parentRect = navCenter.getBoundingClientRect();
-  navIndicator.style.width = rect.width + "px";
-  navIndicator.style.left = rect.left - parentRect.left + "px";
-}
-
-navBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    navBtns.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    pages.forEach(p => {
-      p.classList.toggle("active", p.dataset.page === btn.dataset.page);
-    });
-
-    applyLang();
-    updateIndicator();
-  });
+window.addEventListener("load", () => {
+  applyLang();
+  applyTheme();
+  updateIndicator();
 });
 
-// обновляем индикатор при загрузке и при изменении размера окна
-window.addEventListener("load", updateIndicator);
 window.addEventListener("resize", updateIndicator);
-
-const burgerBtn = document.getElementById("burgerBtn");
-
-burgerBtn.onclick = () => {
-  document.querySelector(".nav-center").classList.toggle("show");
-};
